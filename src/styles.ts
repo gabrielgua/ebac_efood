@@ -3,8 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export const colors = {
   red: "#E66767",
   beige: "#FFEBD9",
-  lightBeige: "#FFE8F1",
+  lightBeige: "#FFF8F1",
   yellow: "#FFB930",
+  white: "#FFFFFF",
 };
 
 const GlobalStyles = createGlobalStyle`

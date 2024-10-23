@@ -1,4 +1,6 @@
+import Footer from "./components/Footer";
 import Header from "./components/Header";
+import RestaurantList from "./components/RestaurantList";
 import GlobalStyles from "./styles";
 
 function App() {
@@ -6,6 +8,8 @@ function App() {
     <>
       <GlobalStyles />
       <Header />
+      <RestaurantList />
+      <Footer />
     </>
   );
 }
