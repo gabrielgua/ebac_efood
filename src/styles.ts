@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const colors = {
   red: "#E66767",
   beige: "#FFEBD9",
-  lightBeige: "#FFEBD9",
+  lightBeige: "#FFE8F1",
   yellow: "#FFB930",
 };
 
@@ -13,6 +13,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+    background-color: ${colors.lightBeige};
   }
 
   .container {

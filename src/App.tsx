@@ -1,10 +1,11 @@
+import Header from "./components/Header";
 import GlobalStyles from "./styles";
 
 function App() {
   return (
     <>
       <GlobalStyles />
-      <div>Salve</div>
+      <Header />
     </>
   );
 }
