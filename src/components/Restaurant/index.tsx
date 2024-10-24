@@ -1,42 +1,22 @@
-import {
-  RestaurantCard,
-  RestaurantCardButton,
-  RestaurantCardDescription,
-  RestaurantCardImageWrapper,
-  RestaurantCardInfo,
-  RestaurantCardTags,
-  RestaurantCardTitle,
-  RestaurantTag,
-} from "./styles";
-
-import img from "../../assets/images/dolce_vita_trattoria.png";
-import { Link } from "react-router-dom";
+import restaurantImgHeader from "../../assets/images/dolce_vita_trattoria_hero.png";
+import ProductCard from "../ProductCard";
+import RestaurantBanner from "../RestaurantBanner";
+import { ProductList } from "./styles";
 
 const Restaurant = () => (
-  <RestaurantCard>
-    <RestaurantCardImageWrapper>
-      <img src={img} alt="restaurant" />
-      <RestaurantCardTags>
-        <RestaurantTag>Destaque da semana</RestaurantTag>
-        <RestaurantTag>Comida italiana</RestaurantTag>
-      </RestaurantCardTags>
-    </RestaurantCardImageWrapper>
-    <RestaurantCardTitle>
-      <p>Nome do restaurante</p>
-      <span>4.9 ⭐</span>
-    </RestaurantCardTitle>
-    <RestaurantCardInfo>
-      <RestaurantCardDescription>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum excepturi
-        impedit possimus eius adipisci nam vero ipsum earum assumenda pariatur!
-        Perferendis corporis rem quisquam harum quibusdam quasi natus,
-        doloremque libero.
-      </RestaurantCardDescription>
-      <Link to="/profile">
-        <RestaurantCardButton>Saiba mais</RestaurantCardButton>
-      </Link>
-    </RestaurantCardInfo>
-  </RestaurantCard>
+  <section>
+    <RestaurantBanner
+      img={restaurantImgHeader}
+      category="Italiana"
+      name="La Dolce Vita Trattoria"
+    />
+    <ProductList className="container">
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+    </ProductList>
+  </section>
 );
 
 export default Restaurant;

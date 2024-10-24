@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
+    list-style: none;
   }
 
   body {
@@ -22,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .container {
-    width: min(1024px, 100% - 2rem);
+    width: min(1024px, 100% - 5rem);
     margin-inline: auto;
   }
 `;

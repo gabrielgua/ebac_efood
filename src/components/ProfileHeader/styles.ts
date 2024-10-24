@@ -7,7 +7,7 @@ export const ProfileHeaderWrapper = styled.header`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-  padding: 5rem;
+  padding-block: 5rem;
 
   > div {
     display: flex;
@@ -22,10 +22,11 @@ export const ProfileHeaderWrapper = styled.header`
   }
 `;
 
-export const ProfileHeaderLink = styled.a`
+export const ProfileHeaderLink = styled.span`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;

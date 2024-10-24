@@ -1,6 +1,11 @@
-import Header from "../../components/HomeHeader";
 import ProfileHeader from "../../components/ProfileHeader";
+import Restaurant from "../../components/Restaurant";
 
-const Profile = () => <ProfileHeader />;
+const Profile = () => (
+  <>
+    <ProfileHeader />
+    <Restaurant />
+  </>
+);
 
 export default Profile;
