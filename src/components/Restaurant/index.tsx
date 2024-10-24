@@ -10,6 +10,7 @@ import {
 } from "./styles";
 
 import img from "../../assets/images/dolce_vita_trattoria.png";
+import { Link } from "react-router-dom";
 
 const Restaurant = () => (
   <RestaurantCard>
@@ -31,7 +32,9 @@ const Restaurant = () => (
         Perferendis corporis rem quisquam harum quibusdam quasi natus,
         doloremque libero.
       </RestaurantCardDescription>
-      <RestaurantCardButton>Saiba mais</RestaurantCardButton>
+      <Link to="/profile">
+        <RestaurantCardButton>Saiba mais</RestaurantCardButton>
+      </Link>
     </RestaurantCardInfo>
   </RestaurantCard>
 );
