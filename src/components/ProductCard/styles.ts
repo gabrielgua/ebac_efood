@@ -12,7 +12,6 @@ export const ProductCardWrapper = styled.div`
 
 export const ProductCardImg = styled.img`
   display: block;
-  border-radius: 1rem;
 `;
 
 export const ProductCardName = styled.h2`
@@ -31,6 +30,7 @@ export const ProductCardButton = styled.button`
   font-size: 14px;
   font-weight: bold;
   color: ${colors.red};
-  padding-block: 0.5rem;
+  padding: 0.25rem 0.5rem;
   background-color: ${colors.beige};
+  cursor: pointer;
 `;

@@ -7,10 +7,12 @@ import {
   RestaurantCardTags,
   RestaurantCardTitle,
   RestaurantTag,
+  RestaurantCardRating,
 } from "./styles";
 
 import img from "../../assets/images/dolce_vita_trattoria.png";
 import { Link } from "react-router-dom";
+import Icon from "../Icon";
 
 const RestaurantCard = () => (
   <RestaurantCardWrapper>
@@ -21,11 +23,14 @@ const RestaurantCard = () => (
         <RestaurantTag>Comida italiana</RestaurantTag>
       </RestaurantCardTags>
     </RestaurantCardImageWrapper>
-    <RestaurantCardTitle>
-      <p>Nome do restaurante</p>
-      <span>4.9 ⭐</span>
-    </RestaurantCardTitle>
     <RestaurantCardInfo>
+      <RestaurantCardTitle>
+        <p>Nome do restaurante</p>
+        <RestaurantCardRating>
+          <p>4.9</p>
+          <Icon icon="star" />
+        </RestaurantCardRating>
+      </RestaurantCardTitle>
       <RestaurantCardDescription>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum excepturi
         impedit possimus eius adipisci nam vero ipsum earum assumenda pariatur!

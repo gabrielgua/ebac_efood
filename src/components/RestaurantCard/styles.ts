@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
+import Icon from "../Icon";
 
 export const RestaurantCardWrapper = styled.div`
   background-color: ${colors.white};
@@ -34,9 +35,10 @@ export const RestaurantTag = styled.div`
 export const RestaurantCardInfo = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
   gap: 1rem;
-  padding: 0.75rem;
   border: 1px solid ${colors.red};
+  color: ${colors.red};
 `;
 
 export const RestaurantCardTitle = styled.h3`
@@ -44,23 +46,33 @@ export const RestaurantCardTitle = styled.h3`
   align-items: center;
   gap: 1rem;
   justify-content: space-between;
-  background-color: ${colors.red};
-  color: ${colors.white};
-  padding: 0.5rem 0.75rem;
+
+  p {
+    font-size: 18px;
+  }
+`;
+
+export const RestaurantCardRating = styled.div`
+  display: flex;
+  gap: 0.5rem;
+
+  :not(p) {
+    color: ${colors.yellow};
+  }
 `;
 
 export const RestaurantCardDescription = styled.p`
-  color: ${colors.red};
   font-size: 14px;
   line-height: 22px;
 `;
 
 export const RestaurantCardButton = styled.button`
   max-width: max-content;
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   border: none;
   background-color: ${colors.red};
   color: ${colors.beige};
   font-size: 16px;
   font-weight: 700;
+  cursor: pointer;
 `;

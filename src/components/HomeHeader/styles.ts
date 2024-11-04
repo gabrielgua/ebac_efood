@@ -14,7 +14,7 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderText = styled.h2`
-  font-size: 32px;
+  font-size: 36px;
   color: ${colors.red};
   text-align: center;
   margin-top: auto;
