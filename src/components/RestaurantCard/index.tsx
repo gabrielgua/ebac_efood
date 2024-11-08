@@ -1,43 +1,46 @@
 import {
-  RestaurantCardWrapper,
   RestaurantCardButton,
   RestaurantCardDescription,
   RestaurantCardImageWrapper,
   RestaurantCardInfo,
+  RestaurantCardRating,
   RestaurantCardTags,
   RestaurantCardTitle,
+  RestaurantCardWrapper,
   RestaurantTag,
-  RestaurantCardRating,
 } from "./styles";
 
-import img from "../../assets/images/dolce_vita_trattoria.png";
 import { Link } from "react-router-dom";
+import { Restaurant } from "../../models/restaurant";
 import Icon from "../Icon";
 
-const RestaurantCard = () => (
+type RestaurantCardProps = {
+  restaurant: Restaurant;
+};
+
+const RestaurantCard = ({ restaurant }: RestaurantCardProps) => (
   <RestaurantCardWrapper>
     <RestaurantCardImageWrapper>
-      <img src={img} alt="restaurant" />
+      <img src={restaurant.capa} alt="restaurant" />
       <RestaurantCardTags>
-        <RestaurantTag>Destaque da semana</RestaurantTag>
-        <RestaurantTag>Comida italiana</RestaurantTag>
+        {restaurant.destacado && (
+          <RestaurantTag>Destaque da semana</RestaurantTag>
+        )}
+        <RestaurantTag>{restaurant.tipo}</RestaurantTag>
       </RestaurantCardTags>
     </RestaurantCardImageWrapper>
     <RestaurantCardInfo>
       <RestaurantCardTitle>
-        <p>Nome do restaurante</p>
+        <p>{restaurant.titulo}</p>
         <RestaurantCardRating>
-          <p>4.9</p>
+          <p>{restaurant.avaliacao}</p>
           <Icon icon="star" />
         </RestaurantCardRating>
       </RestaurantCardTitle>
       <RestaurantCardDescription>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum excepturi
-        impedit possimus eius adipisci nam vero ipsum earum assumenda pariatur!
-        Perferendis corporis rem quisquam harum quibusdam quasi natus,
-        doloremque libero.
+        {restaurant.descricao}
       </RestaurantCardDescription>
-      <Link to="/profile">
+      <Link to={`/restaurantes/${restaurant.id}`}>
         <RestaurantCardButton>Saiba mais</RestaurantCardButton>
       </Link>
     </RestaurantCardInfo>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
 
-export const RestaurantListWrapper = styled.div`
+export const RestaurantListWrapper = styled.ul`
   padding-block: 5rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

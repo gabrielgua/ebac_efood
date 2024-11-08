@@ -12,6 +12,12 @@ export const ProductCardWrapper = styled.div`
 
 export const ProductCardImg = styled.img`
   display: block;
+  max-height: 170px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 0.5rem;
 `;
 
 export const ProductCardName = styled.h2`
@@ -23,6 +29,11 @@ export const ProductCardDescription = styled.p`
   font-size: 14px;
   font-weight: 400;
   line-height: 22px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const ProductCardButton = styled.button`

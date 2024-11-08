@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
 
-export const ProfileHeaderWrapper = styled.header`
+export const RestaurantHeaderWrapper = styled.header`
   min-height: 186px;
 
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@ export const ProfileHeaderWrapper = styled.header`
   }
 `;
 
-export const ProfileHeaderLink = styled.span`
+export const RestaurantHeaderLink = styled.span`
   display: flex;
   align-items: center;
   gap: 0.5rem;

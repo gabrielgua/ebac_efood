@@ -1,26 +1,26 @@
-import { ProfileHeaderLink, ProfileHeaderWrapper } from "./styles";
+import { RestaurantHeaderLink, RestaurantHeaderWrapper } from "./styles";
 
 import { Link } from "react-router-dom";
 import hero from "../../assets/images/hero_bg.svg";
 import logo from "../../assets/images/logo.png";
 import Icon from "../Icon";
 
-const ProfileHeader = () => (
-  <ProfileHeaderWrapper style={{ backgroundImage: `url(${hero})` }}>
+const RestaurantHeader = () => (
+  <RestaurantHeaderWrapper style={{ backgroundImage: `url(${hero})` }}>
     <div className="container">
       <Link to="/">
-        <ProfileHeaderLink>
+        <RestaurantHeaderLink>
           <Icon icon="angle-left" />
           <p>Restaurantes</p>
-        </ProfileHeaderLink>
+        </RestaurantHeaderLink>
       </Link>
       <img src={logo} alt="efood" />
-      <ProfileHeaderLink>
+      <RestaurantHeaderLink>
         <Icon icon="cart-shopping" />
         <p>0 produtos</p>
-      </ProfileHeaderLink>
+      </RestaurantHeaderLink>
     </div>
-  </ProfileHeaderWrapper>
+  </RestaurantHeaderWrapper>
 );
 
-export default ProfileHeader;
+export default RestaurantHeader;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import Icon from "../Icon";
 
 export const RestaurantCardWrapper = styled.div`
   background-color: ${colors.white};
@@ -12,6 +11,9 @@ export const RestaurantCardImageWrapper = styled.div`
   img {
     width: 100%;
     display: block;
+    max-height: 220px;
+    object-fit: cover;
+    object-position: top;
   }
 `;
 
@@ -64,6 +66,11 @@ export const RestaurantCardRating = styled.div`
 export const RestaurantCardDescription = styled.p`
   font-size: 14px;
   line-height: 22px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
 export const RestaurantCardButton = styled.button`
