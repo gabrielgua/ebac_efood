@@ -6,20 +6,25 @@ import {
   ProductCardWrapper,
 } from "./styles";
 
-import productImg from "../../assets/images/produto_img.png";
 import { Product } from "../../models/restaurant";
+import ProductModal from "../Modal";
 
 type ProductCardProps = {
   product: Product;
+  onClick: () => void;
 };
 
-const ProductCard = ({ product }: ProductCardProps) => (
-  <ProductCardWrapper>
-    <ProductCardImg src={product.foto} alt="pizza marguerita" />
-    <ProductCardName>{product.nome}</ProductCardName>
-    <ProductCardDescription>{product.descricao}</ProductCardDescription>
-    <ProductCardButton type="button">Mais detalhes</ProductCardButton>
-  </ProductCardWrapper>
+const ProductCard = ({ product, onClick }: ProductCardProps) => (
+  <>
+    <ProductCardWrapper>
+      <ProductCardImg src={product.foto} alt="pizza marguerita" />
+      <ProductCardName>{product.nome}</ProductCardName>
+      <ProductCardDescription>{product.descricao}</ProductCardDescription>
+      <ProductCardButton type="button" onClick={onClick}>
+        Mais detalhes
+      </ProductCardButton>
+    </ProductCardWrapper>
+  </>
 );
 
 export default ProductCard;
