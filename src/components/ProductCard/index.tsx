@@ -7,7 +7,6 @@ import {
 } from "./styles";
 
 import { Product } from "../../models/restaurant";
-import ProductModal from "../Modal";
 
 type ProductCardProps = {
   product: Product;

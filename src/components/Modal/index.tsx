@@ -17,6 +17,13 @@ export type ProductModalProps = {
   onClose?: () => void;
 };
 
+const formatPrice = (price = 0) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(price);
+};
+
 const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => (
   <ModalWrapper className={product && isOpen ? "open" : ""}>
     <ModalBackdrop onClick={onClose} />
@@ -28,7 +35,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => (
         <ModalText>Serve: {product.porcao}.</ModalText>
 
         <ProductCardButton>
-          Adicionar ao carrinho - R$ {product.preco}
+          Adicionar ao carrinho - {formatPrice(product.preco)}
         </ProductCardButton>
       </ModalInfo>
       <ModalCloseButton onClick={onClose}>
