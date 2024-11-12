@@ -12,7 +12,7 @@ export const ProductCardWrapper = styled.div`
 
 export const ProductCardImg = styled.img`
   display: block;
-  max-height: 170px;
+  height: 170px;
   width: 100%;
   object-fit: cover;
   object-position: center;
@@ -34,14 +34,4 @@ export const ProductCardDescription = styled.p`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
-`;
-
-export const ProductCardButton = styled.button`
-  border: none;
-  font-size: 14px;
-  font-weight: bold;
-  color: ${colors.red};
-  padding: 0.25rem 0.5rem;
-  background-color: ${colors.beige};
-  cursor: pointer;
 `;

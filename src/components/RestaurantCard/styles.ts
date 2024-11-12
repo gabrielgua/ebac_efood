@@ -72,14 +72,3 @@ export const RestaurantCardDescription = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
-
-export const RestaurantCardButton = styled.button`
-  max-width: max-content;
-  padding: 0.25rem 0.5rem;
-  border: none;
-  background-color: ${colors.red};
-  color: ${colors.beige};
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-`;

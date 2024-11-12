@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { ProductCardButton } from "../ProductCard/styles";
+import { ButtonWrapper } from "../Button/styles";
 
 export const CartWrapper = styled.div`
   position: fixed;
@@ -9,8 +9,12 @@ export const CartWrapper = styled.div`
   top: 0;
   left: 0;
 
-  display: flex;
+  display: none;
   justify-content: flex-end;
+
+  &.visible {
+    display: flex;
+  }
 `;
 
 export const CartBackdrop = styled.div`
@@ -29,7 +33,7 @@ export const CartAside = styled.aside`
   background-color: ${colors.red};
   padding: 1rem;
 
-  ${ProductCardButton} {
+  ${ButtonWrapper} {
     width: 100%;
   }
 `;

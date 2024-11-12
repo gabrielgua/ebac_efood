@@ -1,5 +1,4 @@
 import {
-  RestaurantCardButton,
   RestaurantCardDescription,
   RestaurantCardImageWrapper,
   RestaurantCardInfo,
@@ -13,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { Restaurant } from "../../models/restaurant";
 import Icon from "../Icon";
+import Button from "../Button";
 
 type RestaurantCardProps = {
   restaurant: Restaurant;
@@ -40,9 +40,9 @@ const RestaurantCard = ({ restaurant }: RestaurantCardProps) => (
       <RestaurantCardDescription>
         {restaurant.descricao}
       </RestaurantCardDescription>
-      <Link to={`/restaurantes/${restaurant.id}`}>
-        <RestaurantCardButton>Saiba mais</RestaurantCardButton>
-      </Link>
+      <Button type="link" to={`/restaurantes/${restaurant.id}`} size="content">
+        Saiba mais
+      </Button>
     </RestaurantCardInfo>
   </RestaurantCardWrapper>
 );

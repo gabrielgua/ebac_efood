@@ -1,5 +1,4 @@
 import {
-  ProductCardButton,
   ProductCardDescription,
   ProductCardImg,
   ProductCardName,
@@ -7,6 +6,7 @@ import {
 } from "./styles";
 
 import { Product } from "../../models/restaurant";
+import Button from "../Button";
 
 type ProductCardProps = {
   product: Product;
@@ -19,9 +19,9 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => (
       <ProductCardImg src={product.foto} alt="pizza marguerita" />
       <ProductCardName>{product.nome}</ProductCardName>
       <ProductCardDescription>{product.descricao}</ProductCardDescription>
-      <ProductCardButton type="button" onClick={onClick}>
+      <Button onClick={onClick} variant="secondary">
         Mais detalhes
-      </ProductCardButton>
+      </Button>
     </ProductCardWrapper>
   </>
 );

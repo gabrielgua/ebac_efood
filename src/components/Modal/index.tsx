@@ -1,6 +1,6 @@
 import { Product } from "../../models/restaurant";
+import Button from "../Button";
 import Icon from "../Icon";
-import { ProductCardButton } from "../ProductCard/styles";
 import {
   ModalBackdrop,
   ModalCloseButton,
@@ -34,9 +34,9 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => (
         <ModalText>{product.descricao}</ModalText>
         <ModalText>Serve: {product.porcao}.</ModalText>
 
-        <ProductCardButton>
-          Adicionar ao carrinho - {formatPrice(product.preco)}
-        </ProductCardButton>
+        <Button variant="secondary" size="content">
+          {`Adicionar ao carrinho - ${formatPrice(product.preco)}`}
+        </Button>
       </ModalInfo>
       <ModalCloseButton onClick={onClose}>
         <Icon icon="close" />

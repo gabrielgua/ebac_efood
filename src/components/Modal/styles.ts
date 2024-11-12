@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles";
-import { ProductCardButton } from "../ProductCard/styles";
+import { ButtonWrapper } from "../Button/styles";
 
 export const ModalWrapper = styled.div`
   position: fixed;
@@ -42,8 +42,7 @@ export const ModalContent = styled.div`
     display: block;
   }
 
-  ${ProductCardButton} {
-    max-width: max-content;
+  ${ButtonWrapper} {
     margin-top: auto;
   }
 `;
