@@ -9,15 +9,19 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import Cart from "./components/Cart";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
   return (
-    <BrowserRouter>
-      <GlobalStyles />
-      <AppRoutes />
-      <Footer />
-      <Cart />
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <GlobalStyles />
+        <AppRoutes />
+        <Footer />
+        <Cart />
+      </BrowserRouter>
+    </Provider>
   );
 }
 

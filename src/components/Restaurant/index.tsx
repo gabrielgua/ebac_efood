@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import restaurantImgHeader from "../../assets/images/dolce_vita_trattoria_hero.png";
+import { useState } from "react";
 import { Product, Restaurant as RestaurantType } from "../../models/restaurant";
 import ProductModal, { ProductModalProps } from "../Modal";
 import ProductCard from "../ProductCard";
