@@ -1,8 +1,6 @@
 import { useParams } from "react-router-dom";
-import RestaurantHeader from "../../components/ProfileHeader";
 import Restaurant from "../../components/Restaurant";
-import { useEffect, useState } from "react";
-import { Restaurant as RestaurantType } from "../../models/restaurant";
+import RestaurantHeader from "../../components/RestaurantHeader";
 import { useGetRestaurantQuery } from "../../services/api";
 
 const RestaurantPage = () => {

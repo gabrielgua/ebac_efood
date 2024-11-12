@@ -11,47 +11,51 @@ import {
   CartWrapper,
 } from "./styles";
 
-import { useState } from "react";
-import img from "../../assets/images/produto_img.png";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../store";
+import { close, remove } from "../../store/reducers/cart";
 import Button from "../Button";
+import { formatPrice } from "../Modal";
 
 const Cart = () => {
-  const [open, setOpen] = useState(false);
+  const { items, visible } = useSelector((state: RootReducer) => state.cart);
+
+  const dispatch = useDispatch();
 
   const closeCart = () => {
-    setOpen(false);
+    dispatch(close());
   };
 
+  const calculateTotalPrice = () => {
+    return items.reduce((a, current) => {
+      return (a += current.preco);
+    }, 0);
+  };
+
+  const removeItem = (id: number) => dispatch(remove(id));
+
   return (
-    <CartWrapper className={open ? "visible" : ""}>
+    <CartWrapper className={visible ? "visible" : ""}>
       <CartBackdrop onClick={closeCart} />
       <CartAside>
         <CartTitle>Carrinho</CartTitle>
-        <CartItem>
-          <CartItemImg src={img} />
-          <CartItemInfo>
-            <h3>Nome do produto</h3>
-            <p>R$ 49,99</p>
-          </CartItemInfo>
-          <CartItemRemoveButton>
-            <Icon icon="trash-can" />
-          </CartItemRemoveButton>
-        </CartItem>
-        <CartItem>
-          <CartItemImg src={img} />
-          <CartItemInfo>
-            <h3>Nome do produto</h3>
-            <p>R$ 49,99</p>
-          </CartItemInfo>
-          <CartItemRemoveButton>
-            <Icon icon="trash-can" />
-          </CartItemRemoveButton>
-        </CartItem>
+        {items.map((p) => (
+          <CartItem>
+            <CartItemImg src={p.foto} />
+            <CartItemInfo>
+              <h3>{p.nome}</h3>
+              <p>{formatPrice(p.preco)}</p>
+            </CartItemInfo>
+            <CartItemRemoveButton onClick={() => removeItem(p.id)}>
+              <Icon icon="trash-can" />
+            </CartItemRemoveButton>
+          </CartItem>
+        ))}
         <CartTotalPrice>
           <p>Valor total</p>
-          <p>R$ 182,99</p>
+          <p>{formatPrice(calculateTotalPrice())}</p>
         </CartTotalPrice>
-        <Button>Continuar com a entrega</Button>
+        <Button variant="secondary">Continuar com a entrega</Button>
       </CartAside>
     </CartWrapper>
   );
