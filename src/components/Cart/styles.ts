@@ -40,15 +40,26 @@ export const CartAside = styled.aside`
 
 export const CartTitle = styled.h2`
   color: ${colors.beige};
+
+  margin-bottom: 1rem;
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+  }
 `;
 
-export const CartItem = styled.div`
+export const CartItems = styled.ul`
+  display: grid;
+  gap: 1rem;
+`;
+
+export const CartItem = styled.li`
   display: flex;
   gap: 1rem;
   background-color: ${colors.beige};
   padding: 0.5rem;
   color: ${colors.red};
-  margin-top: 1rem;
 `;
 
 export const CartItemImg = styled.img`
@@ -95,4 +106,60 @@ export const CartTotalPrice = styled.div`
   color: ${colors.beige};
   font-size: 16px;
   font-weight: normal;
+`;
+
+export const CartForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+type CartFormInputProps = {
+  $grow?: "2" | "3";
+};
+
+export const CartFormInputMultipleGroups = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const CartFormInputGroup = styled.div<CartFormInputProps>`
+  display: flex;
+  flex: 1;
+  flex-grow: ${(props) => (props.$grow ? props.$grow : "1")};
+  flex-direction: column;
+
+  gap: 0.25rem;
+  color: ${colors.beige};
+
+  input,
+  label {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+
+    border: none;
+    background-color: ${colors.beige};
+    padding: 0.5rem;
+  }
+`;
+
+export const CartFormActions = styled.div`
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+`;
+
+export const CartSuccessWrapper = styled.div`
+  display: grid;
+  gap: 1.5rem;
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${colors.beige};
+  }
 `;

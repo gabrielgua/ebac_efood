@@ -19,7 +19,7 @@ const ProductCard = ({ product, onClick }: ProductCardProps) => (
       <ProductCardImg src={product.foto} alt="pizza marguerita" />
       <ProductCardName>{product.nome}</ProductCardName>
       <ProductCardDescription>{product.descricao}</ProductCardDescription>
-      <Button onClick={onClick} variant="secondary">
+      <Button onClick={onClick} $variant="secondary">
         Mais detalhes
       </Button>
     </ProductCardWrapper>

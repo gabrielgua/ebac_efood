@@ -46,7 +46,7 @@ const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
           <ModalText>Serve: {product.porcao}.</ModalText>
 
           <Button
-            variant="secondary"
+            $variant="secondary"
             size="content"
             onClick={() => addToCart(product)}
           >
