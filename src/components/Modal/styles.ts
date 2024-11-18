@@ -45,6 +45,14 @@ export const ModalContent = styled.div`
   ${ButtonWrapper} {
     margin-top: auto;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    ${ButtonWrapper} {
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const ModalInfo = styled.div`
