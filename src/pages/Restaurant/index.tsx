@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Restaurant from "../../components/Restaurant";
 import RestaurantHeader from "../../components/RestaurantHeader";
 import { useGetRestaurantQuery } from "../../services/api";
+import FullScreenLoader from "../../components/FullScreenLoader";
 
 const RestaurantPage = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ const RestaurantPage = () => {
   const { data: restaurant } = useGetRestaurantQuery(id!);
 
   if (!restaurant) {
-    return <h2>Loading...</h2>;
+    return <FullScreenLoader />;
   }
 
   return (

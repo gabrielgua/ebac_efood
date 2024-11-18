@@ -9,10 +9,9 @@ import {
   RestaurantTag,
 } from "./styles";
 
-import { Link } from "react-router-dom";
 import { Restaurant } from "../../models/restaurant";
-import Icon from "../Icon";
 import Button from "../Button";
+import Icon from "../Icon";
 
 type RestaurantCardProps = {
   restaurant: Restaurant;
