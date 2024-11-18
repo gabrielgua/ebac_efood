@@ -176,6 +176,7 @@ const Cart = () => {
 
   const canGoToPayment = () => {
     return (
+      form.dirty &&
       !("deliveryName" in form.errors) &&
       !("deliveryAdress" in form.errors) &&
       !("deliveryCity" in form.errors) &&
