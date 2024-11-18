@@ -123,7 +123,9 @@ const Cart = () => {
       cardNumber: Yup.string()
         .length(19, "Número do cartão inválido.")
         .required("Campo obrigatório."),
-      cardCvv: Yup.string().required("Campo obrigatório."),
+      cardCvv: Yup.string()
+        .length(3, "CVV inválido.")
+        .required("Campo obrigatório."),
       cardExpiryMonth: Yup.number()
         .min(1, "Mês entre '01' e '12'.")
         .max(12, "Mês entre '01' e '12'.")
