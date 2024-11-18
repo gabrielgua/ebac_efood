@@ -21,6 +21,7 @@ import {
 
 import { useFormik } from "formik";
 import { useEffect, useState } from "react";
+import ReactInputMask from "react-input-mask";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useOrderMutation } from "../../services/api";
@@ -111,16 +112,32 @@ const Cart = () => {
       deliveryName: Yup.string().required("Campo obrigatório."),
       deliveryAdress: Yup.string().required("Campo obrigatório."),
       deliveryCity: Yup.string().required("Campo obrigatório."),
-      deliveryCep: Yup.string().required("Campo obrigatório."),
-      deliveryNumber: Yup.string().required("Campo obrigatório."),
+      deliveryCep: Yup.string()
+        .length(9, "CEP inválido.")
+        .required("Campo obrigatório."),
+      deliveryNumber: Yup.number()
+        .positive("Deve ser positivo")
+        .required("Campo obrigatório."),
       deliveryComplement: Yup.string(),
       cardName: Yup.string().required("Campo obrigatório."),
       cardNumber: Yup.string().required("Campo obrigatório."),
       cardCvv: Yup.string().required("Campo obrigatório."),
-      cardExpiryMonth: Yup.string().required("Campo obrigatório."),
-      cardExpiryYear: Yup.string().required("Campo obrigatório."),
+      cardExpiryMonth: Yup.number()
+        .min(1, "Mês entre '01' e '12'.")
+        .max(12, "Mês entre '01' e '12'.")
+        .required("Campo obrigatório."),
+      cardExpiryYear: Yup.number()
+        .min(
+          new Date().getFullYear(),
+          `Ano maior ou igual à '${new Date().getFullYear()}'`
+        )
+        .required("Campo obrigatório."),
     }),
     onSubmit: (values, { resetForm }) => {
+      if (!form.isValid) {
+        return;
+      }
+
       order({
         products: items.map((item) => ({ id: item.id, price: item.preco })),
         delivery: {
@@ -149,6 +166,24 @@ const Cart = () => {
       resetForm();
     },
   });
+
+  const isInputInvalid = (field: string) => {
+    const isTouched = field in form.touched;
+    const isInvalid = field in form.errors;
+
+    return isTouched && isInvalid;
+  };
+
+  const canGoToPayment = () => {
+    return (
+      !("deliveryName" in form.errors) &&
+      !("deliveryAdress" in form.errors) &&
+      !("deliveryCity" in form.errors) &&
+      !("deliveryCep" in form.errors) &&
+      !("deliveryNumber" in form.errors) &&
+      !("deliveryComplement" in form.errors)
+    );
+  };
 
   return (
     <CartWrapper className={visible ? "visible" : ""}>
@@ -215,7 +250,13 @@ const Cart = () => {
                     value={form.values.deliveryName}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      isInputInvalid("deliveryName") ? "input-invalid" : ""
+                    }
                   />
+                  {isInputInvalid("deliveryName") && (
+                    <small>{form.errors.deliveryName}</small>
+                  )}
                 </CartFormInputGroup>
                 <CartFormInputGroup>
                   <label htmlFor="deliveryAdress">Endereço</label>
@@ -226,7 +267,13 @@ const Cart = () => {
                     value={form.values.deliveryAdress}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      isInputInvalid("deliveryAdress") ? "input-invalid" : ""
+                    }
                   />
+                  {isInputInvalid("deliveryAdress") && (
+                    <small>{form.errors.deliveryAdress}</small>
+                  )}
                 </CartFormInputGroup>
                 <CartFormInputGroup>
                   <label htmlFor="deliveryCity">Cidade</label>
@@ -237,30 +284,50 @@ const Cart = () => {
                     value={form.values.deliveryCity}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      isInputInvalid("deliveryCity") ? "input-invalid" : ""
+                    }
                   />
+                  {isInputInvalid("deliveryCity") && (
+                    <small>{form.errors.deliveryCity}</small>
+                  )}
                 </CartFormInputGroup>
                 <CartFormInputMultipleGroups>
                   <CartFormInputGroup>
                     <label htmlFor="deliveryCep">CEP</label>
-                    <input
+                    <ReactInputMask
+                      mask="99999-999"
+                      maskChar=""
                       id="deliveryCep"
                       type="text"
                       name="deliveryCep"
                       value={form.values.deliveryCep}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("deliveryCep") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("deliveryCep") && (
+                      <small>{form.errors.deliveryCep}</small>
+                    )}
                   </CartFormInputGroup>
                   <CartFormInputGroup>
                     <label htmlFor="deliveryNumber">Número</label>
                     <input
                       id="deliveryNumber"
-                      type="text"
+                      type="number"
                       name="deliveryNumber"
                       value={form.values.deliveryNumber}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("deliveryNumber") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("deliveryNumber") && (
+                      <small>{form.errors.deliveryNumber}</small>
+                    )}
                   </CartFormInputGroup>
                 </CartFormInputMultipleGroups>
                 <CartFormInputGroup>
@@ -280,6 +347,7 @@ const Cart = () => {
                   <Button
                     $variant="secondary"
                     onClick={() => goToCartStep("payment")}
+                    disabled={!canGoToPayment()}
                   >
                     Continuar com o pagamento
                   </Button>
@@ -304,63 +372,107 @@ const Cart = () => {
                     value={form.values.cardName}
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
+                    className={
+                      isInputInvalid("cardName") ? "input-invalid" : ""
+                    }
                   />
+                  {isInputInvalid("cardName") && (
+                    <small>{form.errors.cardName}</small>
+                  )}
                 </CartFormInputGroup>
                 <CartFormInputMultipleGroups>
                   <CartFormInputGroup $grow="3">
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
+                    <ReactInputMask
+                      mask="9999 9999 9999 9999"
+                      maskChar=""
                       id="cardNumber"
                       type="text"
                       name="cardNumber"
                       value={form.values.cardNumber}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("cardNumber") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("cardNumber") && (
+                      <small>{form.errors.cardNumber}</small>
+                    )}
                   </CartFormInputGroup>
                   <CartFormInputGroup>
                     <label htmlFor="cardCvv">CVV</label>
-                    <input
+                    <ReactInputMask
+                      mask="999"
+                      maskChar=""
                       id="cardCvv"
                       type="text"
                       name="cardCvv"
                       value={form.values.cardCvv}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("cardCvv") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("cardCvv") && (
+                      <small>{form.errors.cardCvv}</small>
+                    )}
                   </CartFormInputGroup>
                 </CartFormInputMultipleGroups>
                 <CartFormInputMultipleGroups>
                   <CartFormInputGroup>
                     <label htmlFor="cardExpiryMonth">Mês de vencimento</label>
-                    <input
+                    <ReactInputMask
+                      mask="99"
+                      maskChar=""
                       id="cardExpiryMonth"
                       type="text"
                       name="cardExpiryMonth"
                       value={form.values.cardExpiryMonth}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("cardExpiryMonth") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("cardExpiryMonth") && (
+                      <small>{form.errors.cardExpiryMonth}</small>
+                    )}
                   </CartFormInputGroup>
                   <CartFormInputGroup>
                     <label htmlFor="cardExpiryYear">Ano de vencimento</label>
-                    <input
+                    <ReactInputMask
+                      mask="9999"
+                      maskChar=""
                       id="cardExpiryYear"
                       type="text"
                       name="cardExpiryYear"
                       value={form.values.cardExpiryYear}
                       onChange={form.handleChange}
                       onBlur={form.handleBlur}
+                      className={
+                        isInputInvalid("cardExpiryYear") ? "input-invalid" : ""
+                      }
                     />
+                    {isInputInvalid("cardExpiryYear") && (
+                      <small>{form.errors.cardExpiryYear}</small>
+                    )}
                   </CartFormInputGroup>
                 </CartFormInputMultipleGroups>
 
                 <CartFormActions>
-                  <Button $variant="secondary" type="button" submit>
+                  <Button
+                    $variant="secondary"
+                    type="button"
+                    disabled={!form.isValid}
+                    submit
+                  >
                     {isLoading
                       ? "Finalizando o pagamento..."
                       : "Finalizar pagamento"}
                   </Button>
+
                   <Button
                     $variant="secondary"
                     onClick={() => goToCartStep("delivery")}

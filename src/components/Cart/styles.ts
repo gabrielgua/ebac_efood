@@ -144,6 +144,16 @@ export const CartFormInputGroup = styled.div<CartFormInputProps>`
     border: none;
     background-color: ${colors.beige};
     padding: 0.5rem;
+
+    &.input-invalid {
+      outline: 2px solid ${colors.yellow};
+      outline-offset: 1px;
+    }
+  }
+
+  small {
+    color: ${colors.yellow};
+    font-weight: bold;
   }
 `;
 
