@@ -15,7 +15,8 @@ export const ButtonWrapper = styled.button<Omit<ButtonProps, "type">>`
     props.$variant === "primary" ? colors.beige : colors.red};
   font-size: 14px;
   font-weight: 700;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
+  opacity: ${(props) => (props.disabled ? ".4" : "1")};
 `;
 
 export const LinkWrapper = styled(Link)<ButtonProps>`

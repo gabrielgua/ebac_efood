@@ -8,6 +8,7 @@ export type ButtonProps = {
   type?: "link" | "button";
   to?: string;
   submit?: boolean;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   type = "button",
   to,
   submit = false,
+  disabled,
 }: ButtonProps) => {
   if (type === "button") {
     return (
@@ -26,6 +28,7 @@ const Button = ({
         $variant={variant}
         onClick={onClick}
         size={size}
+        disabled={disabled}
       >
         {children}
       </ButtonWrapper>
